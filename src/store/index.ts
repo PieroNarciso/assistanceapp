@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    domain: 'https://assistanceapp.herokuapp.com',
+    domain: 'https://assistanceappapi.herokuapp.com',
     user: {
       username: '',
       password: '',

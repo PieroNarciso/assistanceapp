@@ -3,7 +3,7 @@
     <v-card>
       <v-toolbar flat color="primary" dark>
         <v-spacer>
-          <v-toolbar-title>Today Assistances</v-toolbar-title>
+          <v-toolbar-title>Assistances</v-toolbar-title>
         </v-spacer>
       </v-toolbar>
       <v-card-text>
@@ -44,7 +44,7 @@ export default Vue.extend({
       const date = new Date(datetime);
       return moment(date)
         .utcOffset(-600)
-        .format("MMMM Do YYYY HH:mm");
+        .format("MMMM DD YYYY HH:mm:ss");
     },
     getDate: function(datetime: Date) {
       const date = new Date(datetime);
