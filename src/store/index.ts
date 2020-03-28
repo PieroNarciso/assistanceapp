@@ -249,7 +249,6 @@ export default new Vuex.Store({
           })
         })
         .catch(err => {
-          console.log(err.response.data)
           context.commit('resetSuccessToken');
           context.commit('updateErrorToken', {
             msg: err.response.data.msg,
