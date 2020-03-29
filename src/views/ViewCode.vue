@@ -99,6 +99,7 @@ export default Vue.extend({
     } else {
       this.$router.push("/");
     }
+    document.title = this.$route.meta.title;
   }
 });
 </script>

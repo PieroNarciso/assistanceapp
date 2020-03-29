@@ -114,6 +114,7 @@ export default Vue.extend({
       this.$router.push("/");
     }
     this.$store.dispatch("getAssistances", token);
+    document.title = this.$route.meta.title;
   }
 });
 </script>

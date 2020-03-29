@@ -11,7 +11,10 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    title: 'Assistance App'
+    meta: {
+      title: 'Assistance App'
+    }
+
   },
   {
     path: '/about',
@@ -25,13 +28,18 @@ const routes = [
     path: '/user',
     name: 'User',
     component: ViewUser,
-    title: 'Assistance | User'
+    meta: {
+      title: 'Assistance | User'
+    }
+
   },
   {
     path: '/code-view',
     name: 'CodeView',
     component: ViewCode,
-    title: 'Code View'
+    meta: {
+      title: 'Code View'
+    }
   }
 ]
 
