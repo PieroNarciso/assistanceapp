@@ -10,7 +10,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    title: 'Assistance App'
   },
   {
     path: '/about',
@@ -23,12 +24,14 @@ const routes = [
   {
     path: '/user',
     name: 'User',
-    component: ViewUser
+    component: ViewUser,
+    title: 'Assistance | User'
   },
   {
     path: '/code-view',
     name: 'CodeView',
-    component: ViewCode
+    component: ViewCode,
+    title: 'Code View'
   }
 ]
 
