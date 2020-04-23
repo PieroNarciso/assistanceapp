@@ -27,6 +27,14 @@
               required
               append-icon="mdi-lock"
             ></v-text-field>
+            <v-progress-linear
+              v-if="showLoader"
+              color="cyan darken-2"
+              indeterminate
+              rounded
+              height="6"
+              class="mb-3"
+            ></v-progress-linear>
             <v-btn color="primary" @click="login">
               Login
               <v-icon right>mdi-login</v-icon>
@@ -66,6 +74,7 @@ export default Vue.extend({
         username: this.loginData.username,
         password: this.loginData.password
       };
+      this.$store.dispatch("updateShowLoaderFormLogin", true);
       this.$store.dispatch("login", data);
     }
   },
@@ -80,6 +89,10 @@ export default Vue.extend({
 
     msgSuccess() {
       return this.$store.getters.getMsgSuccess;
+    },
+
+    showLoader() {
+      return this.$store.getters.getShowLoaderFormLogin;
     }
   },
   beforeCreate: function() {

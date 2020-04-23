@@ -49,7 +49,11 @@ export default new Vuex.Store({
 
     assistances: [],
 
-    intervalValue: 0
+    intervalValue: 0,
+
+    showLoaderFormLogin: false,
+
+    showLoaderFormSignup: false
 
   },
   getters: {
@@ -95,7 +99,10 @@ export default new Vuex.Store({
 
     getMsgSuccess: (state) => {
       return state.msgSuccess
-    }
+    },
+
+    getShowLoaderFormLogin: (state) => state.showLoaderFormLogin,
+    getShowLoaderFormSignup: (state) => state.showLoaderFormSignup
   },
   mutations: {
     logoutUser: (state) => {
@@ -170,7 +177,15 @@ export default new Vuex.Store({
     },
 
     setIntervalValue: (state, time: number) => {
-      state.intervalValue = time
+      state.intervalValue = time;
+    },
+
+    updateShowLoaderFormLogin: (state, data: boolean) => {
+      state.showLoaderFormLogin = data;
+    },
+
+    updateShowLoaderFormSignup: (state, data: boolean) => {
+      state.showLoaderFormSignup = data;
     }
   },
   actions: {
@@ -179,6 +194,7 @@ export default new Vuex.Store({
       axios
         .post(context.state.domain + "/api/auth/login/", data)
         .then(res => {
+          context.commit('updateShowLoaderFormLogin', false);
           Vue.$cookies.set('token', res.data.token, 'd')
           context.commit("updateUser", res.data);
           context.commit("validCredentials", true);
@@ -186,6 +202,7 @@ export default new Vuex.Store({
           router.push('user');
         })
         .catch(err => {
+          context.commit('updateShowLoaderFormLogin', false)
           context.commit('validCredentials', false);
           context.commit('updateErrorLogin', {
             msg: "Unable to login with provided credentials.",
@@ -198,12 +215,14 @@ export default new Vuex.Store({
       axios
         .post(context.state.domain + "/api/users/", data)
         .then(res => {
+          context.commit('updateShowLoaderFormSignup', false)
           context.dispatch('login', {
             username: data.username,
             password: data.password
           })
         })
         .catch(err => {
+          context.commit('updateShowLoaderFormSignup', false)
           console.log(err.response.data)
         })
     },
@@ -316,6 +335,14 @@ export default new Vuex.Store({
 
     setIntervalValue: (context, time: number) => {
       context.commit('setIntervalValue', time);
+    },
+
+    updateShowLoaderFormLogin: (context, data: boolean) => {
+      context.commit('updateShowLoaderFormLogin', data);
+    },
+
+    updateShowLoaderFormSignup: (context, data: boolean) => {
+      context.commit('updateShowLoaderFormSignup', data);
     }
   },
   modules: {

@@ -59,6 +59,14 @@
               outlined
               append-icon="mdi-lock"
             ></v-text-field>
+            <v-progress-linear
+              v-if="showLoader"
+              color="cyan darken-2"
+              indeterminate
+              rounded
+              height="6"
+              class="mb-3"
+            ></v-progress-linear>
             <v-btn color="success" @click="signup">
               Signup
               <v-icon right>mdi-login-variant</v-icon>
@@ -82,8 +90,14 @@ export default Vue.extend({
       user: {} as User
     };
   },
+  computed: {
+    showLoader() {
+      return this.$store.getters.getShowLoaderFormSignup;
+    }
+  },
   methods: {
     signup: function() {
+      this.$store.dispatch("updateShowLoaderFormSignup", true);
       this.$store.dispatch("signup", this.user);
     }
   }
