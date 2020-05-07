@@ -53,7 +53,16 @@ export default new Vuex.Store({
 
     showLoaderFormLogin: false,
 
-    showLoaderFormSignup: false
+    showLoaderFormSignup: false,
+
+    rules: {
+      usernameRules: [
+        (v: string) => v.length >= 3 || 'At least 3 characters long.'
+      ],
+      passwordRules: [
+        (v: string) => v.length >= 8 || 'At least 8 characters long.'
+      ],
+    }
 
   },
   getters: {
@@ -102,7 +111,9 @@ export default new Vuex.Store({
     },
 
     getShowLoaderFormLogin: (state) => state.showLoaderFormLogin,
-    getShowLoaderFormSignup: (state) => state.showLoaderFormSignup
+    getShowLoaderFormSignup: (state) => state.showLoaderFormSignup,
+    getUsernameRules: (state) => state.rules.usernameRules,
+    getPasswordRules: (state) => state.rules.passwordRules,
   },
   mutations: {
     logoutUser: (state) => {

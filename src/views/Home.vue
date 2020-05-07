@@ -2,12 +2,21 @@
   <div class="home">
     <the-header></the-header>
     <v-content>
-      <v-container>
-        <form-login></form-login>
-      </v-container>
-      <v-divider horizontal></v-divider>
-      <v-container>
-        <form-signup></form-signup>
+      <v-container fluid>
+        <v-card flat>
+          <v-row justify-lg="center">
+            <v-col cols="12" md="6" lg="4">
+              <v-card-text>
+                <form-login></form-login>
+              </v-card-text>
+            </v-col>
+            <v-col cols="12" md="6" lg="4">
+              <v-card-text>
+                <form-signup></form-signup>
+              </v-card-text>
+            </v-col>
+          </v-row>
+        </v-card>
       </v-container>
     </v-content>
     <the-footer></the-footer>

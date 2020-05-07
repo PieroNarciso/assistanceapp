@@ -17,6 +17,7 @@
               outlined
               required
               append-icon="mdi-account"
+              :rules="usernameRules"
             ></v-text-field>
             <v-text-field
               @keyup.enter="login"
@@ -26,6 +27,7 @@
               outlined
               required
               append-icon="mdi-lock"
+              :rules="passwordRules"
             ></v-text-field>
             <v-progress-linear
               v-if="showLoader"
@@ -93,6 +95,14 @@ export default Vue.extend({
 
     showLoader() {
       return this.$store.getters.getShowLoaderFormLogin;
+    },
+
+    usernameRules() {
+      return this.$store.getters.getUsernameRules;
+    },
+
+    passwordRules() {
+      return this.$store.getters.getPasswordRules;
     }
   },
   beforeCreate: function() {
