@@ -40,6 +40,7 @@
               required
               outlined
               append-icon="mdi-email"
+              :rules="emailRules"
             ></v-text-field>
             <v-text-field
               @keyup.enter="signup"
@@ -93,6 +94,10 @@ export default Vue.extend({
   computed: {
     showLoader() {
       return this.$store.getters.getShowLoaderFormSignup;
+    },
+
+    emailRules() {
+      return this.$store.getters.getEmailRules;
     }
   },
   methods: {

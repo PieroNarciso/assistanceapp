@@ -53,7 +53,19 @@ export default new Vuex.Store({
 
     showLoaderFormLogin: false,
 
-    showLoaderFormSignup: false
+    showLoaderFormSignup: false,
+
+    rules: {
+      usernameRules: [
+        (v: string) => v.length >= 3 || 'At least 3 characters long.'
+      ],
+      passwordRules: [
+        (v: string) => v.length >= 8 || 'At least 8 characters long.'
+      ],
+      emailRules: [
+        (v: string) => RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@aloe.ulima.edu.pe$", v) || "Invalid email"
+      ]
+    }
 
   },
   getters: {
@@ -102,7 +114,10 @@ export default new Vuex.Store({
     },
 
     getShowLoaderFormLogin: (state) => state.showLoaderFormLogin,
-    getShowLoaderFormSignup: (state) => state.showLoaderFormSignup
+    getShowLoaderFormSignup: (state) => state.showLoaderFormSignup,
+    getUsernameRules: (state) => state.rules.usernameRules,
+    getPasswordRules: (state) => state.rules.passwordRules,
+    getEmailRules: (state) => state.rules.emailRules
   },
   mutations: {
     logoutUser: (state) => {
