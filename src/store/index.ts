@@ -63,7 +63,7 @@ export default new Vuex.Store({
         (v: string) => v.length >= 8 || 'At least 8 characters long.'
       ],
       emailRules: [
-        (v: string) => RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@aloe.ulima.edu.pe$", v) || "Invalid email"
+        (v: string) => true || "Invalid email"
       ]
     }
 

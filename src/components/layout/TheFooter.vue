@@ -1,6 +1,6 @@
 <template>
   <div id="the-footer">
-    <v-footer app color="blue accent-3 white--text">
+    <v-footer app color="blue accent-3 white--text" absolute>
       <v-card-text>
         <v-icon color="white">mdi-copyright</v-icon>
         {{ new Date().getFullYear() }} —
