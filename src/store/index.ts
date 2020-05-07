@@ -62,9 +62,6 @@ export default new Vuex.Store({
       passwordRules: [
         (v: string) => v.length >= 8 || 'At least 8 characters long.'
       ],
-      emailRules: [
-        (v: string) => true || "Invalid email"
-      ]
     }
 
   },
@@ -117,7 +114,6 @@ export default new Vuex.Store({
     getShowLoaderFormSignup: (state) => state.showLoaderFormSignup,
     getUsernameRules: (state) => state.rules.usernameRules,
     getPasswordRules: (state) => state.rules.passwordRules,
-    getEmailRules: (state) => state.rules.emailRules
   },
   mutations: {
     logoutUser: (state) => {
