@@ -74,7 +74,7 @@ export default new Vuex.Store({
     },
 
     getTodayAssistances: (state) => {
-      return state.todayAssistances;
+      return state.todayAssistances.sort((a, b) => b.id - a.id);
     },
 
     getIntervalValue: (state) => {
