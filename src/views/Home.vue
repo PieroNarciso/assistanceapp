@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <the-header></the-header>
     <v-content>
       <v-container fluid>
         <v-card flat>
@@ -19,7 +18,6 @@
         </v-card>
       </v-container>
     </v-content>
-    <the-footer></the-footer>
   </div>
 </template>
 

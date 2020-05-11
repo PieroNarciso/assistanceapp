@@ -3,14 +3,15 @@ import Vuex from 'vuex'
 
 import axios from 'axios'
 
-import { User, Utils } from "@/interfaces/interfaces"
+import { User, Utils, Assistance } from "@/interfaces/interfaces"
 import router from "@/router/index";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    domain: 'https://assistanceappapi.herokuapp.com',
+    // domain: 'https://assistanceappapi.herokuapp.com',
+    domain: "http://127.0.0.1:8000",
     user: {
       username: '',
       password: '',
@@ -47,7 +48,9 @@ export default new Vuex.Store({
       }
     },
 
-    assistances: [],
+    assistances: [] as Assistance[],
+
+    todayAssistances: [] as Assistance[],
 
     intervalValue: 0,
 
@@ -67,7 +70,11 @@ export default new Vuex.Store({
   },
   getters: {
     getAssistances: (state) => {
-      return state.assistances
+      return state.assistances;
+    },
+
+    getTodayAssistances: (state) => {
+      return state.todayAssistances;
     },
 
     getIntervalValue: (state) => {
@@ -135,8 +142,16 @@ export default new Vuex.Store({
       state.user.password = "";
     },
 
-    addAssistances: (state, data) => {
+    getAssistances: (state, data: Assistance[]) => {
       state.assistances = data
+    },
+
+    updateTodayAssistances: (state, data: Assistance[]) => {
+      state.todayAssistances = data
+    },
+
+    addAssistance: (state, data: Assistance) => {
+      state.assistances.splice(0, 0, data);
     },
 
     resetCode: (state) => {
@@ -203,7 +218,7 @@ export default new Vuex.Store({
 
     login: (context, data: User) => {
       axios
-        .post(context.state.domain + "/api/auth/login/", data)
+        .post(context.state.domain + "/api/login-token/", data)
         .then(res => {
           context.commit('updateShowLoaderFormLogin', false);
           Vue.$cookies.set('token', res.data.token, 'd')
@@ -246,8 +261,8 @@ export default new Vuex.Store({
 
     getUserData: (context, token) => {
       axios({
-        method: "GET",
-        url: context.state.domain + "/api/auth/get-user/",
+        method: "POST",
+        url: context.state.domain + "/api/users/get_user_data/",
         headers: {
           Authorization: `Token ${token}`
         }
@@ -276,7 +291,8 @@ export default new Vuex.Store({
           context.commit('updateSuccessToken', {
             msg: 'Assistance registered',
             success: true
-          })
+          });
+          context.dispatch('addAssistance', res.data)
         })
         .catch(err => {
           context.commit('resetSuccessToken');
@@ -296,7 +312,7 @@ export default new Vuex.Store({
         }
       })
         .then(res => {
-          context.dispatch('addAssistances', res.data)
+          context.commit('getAssistances', res.data)
         })
         .catch(err => {
           console.log(err)
@@ -304,14 +320,14 @@ export default new Vuex.Store({
         })
     },
 
-    addAssistances: (context, data) => {
-      context.commit('addAssistances', data)
+    addAssistance: (context, data: Assistance) => {
+      context.commit('addAssistance', data)
     },
 
     getCode: (context, token) => {
       axios({
         method: "GET",
-        url: context.state.domain + '/api/auth/get-code/',
+        url: context.state.domain + '/api/codes/get_code/',
         headers: {
           Authorization: `Token ${token}`
         }
@@ -338,6 +354,20 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+
+    getTodayAssistances: (context, token) => {
+      axios({
+        method: 'GET',
+        url: context.state.domain + '/api/assistances/get_today/',
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+        .then(res => {
+          context.commit('updateTodayAssistances', res.data)
+        })
+        .catch(err => console.log(err))
     },
 
     resetCode: (context) => {

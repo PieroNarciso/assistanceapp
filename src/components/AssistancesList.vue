@@ -3,7 +3,7 @@
     <v-card>
       <v-toolbar flat color="primary" dark>
         <v-spacer>
-          <v-toolbar-title>Assistances</v-toolbar-title>
+          <v-toolbar-title>Today Assistances</v-toolbar-title>
         </v-spacer>
       </v-toolbar>
       <v-card-text>
@@ -19,7 +19,7 @@
             </template>
 
             <template v-else>
-              <v-list-item>Not assistances today yet</v-list-item>
+              <v-list-item>No assistances today yet</v-list-item>
             </template>
           </v-list-item-group>
         </v-list>
@@ -61,7 +61,7 @@ export default Vue.extend({
 
   computed: {
     assistances() {
-      return this.$store.getters.getAssistances;
+      return this.$store.getters.getTodayAssistances;
     }
   }
 });
