@@ -1,23 +1,21 @@
 <template>
   <div class="home">
-    <v-content>
-      <v-container fluid>
-        <v-card flat>
-          <v-row justify-lg="center">
-            <v-col cols="12" md="6" lg="4">
-              <v-card-text>
-                <form-login></form-login>
-              </v-card-text>
-            </v-col>
-            <v-col cols="12" md="6" lg="4">
-              <v-card-text>
-                <form-signup></form-signup>
-              </v-card-text>
-            </v-col>
-          </v-row>
-        </v-card>
-      </v-container>
-    </v-content>
+    <v-container fluid>
+      <v-card flat>
+        <v-row justify-lg="center" no-gutters>
+          <v-col cols="12" md="6" lg="4">
+            <v-card-text>
+              <form-login></form-login>
+            </v-card-text>
+          </v-col>
+          <v-col cols="12" md="6" lg="4">
+            <v-card-text>
+              <form-signup></form-signup>
+            </v-card-text>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
