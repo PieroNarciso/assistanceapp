@@ -320,6 +320,26 @@ export default new Vuex.Store({
         })
     },
 
+    downloadAssistances: (context, data) => {
+      axios({
+        method: 'POST',
+        url: context.state.domain + '/api/assistances/download_data/',
+        headers: {
+          Authorization: `Token ${Vue.$cookies.get('token')}`,
+        },
+        data: data
+      })
+        .then(res => {
+          const csvfile = new Blob([res.data], { type: 'text/csv' })
+          const downloadLink = document.createElement('a');
+          downloadLink.download = 'assistances.csv';
+          downloadLink.href = window.URL.createObjectURL(csvfile);
+          downloadLink.style.display = "none";
+          downloadLink.click();
+        })
+        .catch(err => console.log(err))
+    },
+
     addAssistance: (context, data: Assistance) => {
       context.commit('addAssistance', data)
     },

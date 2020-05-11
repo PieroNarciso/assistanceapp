@@ -1,26 +1,27 @@
 <template>
   <div id="code-view">
-    <v-content>
-      <v-row justify="center" no-gutters>
+    <v-container>
+      <v-row justify="center">
         <v-col cols="12">
-          <v-container>
-            <h3 class="display-4">{{ utilsData.code }}</h3>
-          </v-container>
+          <h2 class="display-4 text-center">{{ utilsData.code }}</h2>
         </v-col>
       </v-row>
-      <hr />
-      <v-container>
-        <v-btn color="success" @click="createCode">Create New Code</v-btn>
-        <v-container>
-          <v-row justify="center" no-gutters>
-            <v-col cols="8" sm="6" md="4" lg="3">
-              <v-select label="Select interval time" @change="setCreateCodeInterval" :items="times"></v-select>
-              {{ intervalValue }} min interval
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-container>
-    </v-content>
+      <v-divider></v-divider>
+      <v-row justify="center">
+        <v-col cols="6">
+          <div class="text-center">
+            <v-btn color="success" @click="createCode">Create New Code</v-btn>
+          </div>
+        </v-col>
+      </v-row>
+
+      <v-row justify="center" no-gutters>
+        <v-col cols="8" sm="6" md="4" lg="3">
+          <v-select label="Select interval time" @change="setCreateCodeInterval" :items="times"></v-select>
+          <p class="text-center">{{ intervalValue }} min interval</p>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
