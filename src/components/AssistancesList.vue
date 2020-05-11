@@ -3,7 +3,7 @@
     <v-card>
       <v-toolbar flat color="primary" dark>
         <v-spacer>
-          <v-toolbar-title>Today Assistances</v-toolbar-title>
+          <v-toolbar-title class="text-center">Today Assistances</v-toolbar-title>
         </v-spacer>
       </v-toolbar>
       <v-card-text>

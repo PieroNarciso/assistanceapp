@@ -1,11 +1,11 @@
 <template>
   <div id="the-footer">
-    <v-footer app color="blue accent-3 white--text" absolute>
-      <v-card-text>
-        <v-icon color="white">mdi-copyright</v-icon>
+    <v-footer absolute class="font-weight-medium blue accent-3 white--text">
+      <v-col class="text-center" cols="12">
+        <v-icon class="white--text">mdi-copyright</v-icon>
         {{ new Date().getFullYear() }} —
         <strong>CECATA</strong>
-      </v-card-text>
+      </v-col>
     </v-footer>
   </div>
 </template>

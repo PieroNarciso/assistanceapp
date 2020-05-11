@@ -10,8 +10,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    domain: 'https://assistanceappapi.herokuapp.com',
-    // domain: "http://127.0.0.1:8000",
+    // domain: 'https://assistanceappapi.herokuapp.com',
+    domain: "http://127.0.0.1:8000",
     user: {
       username: '',
       password: '',
@@ -330,6 +330,7 @@ export default new Vuex.Store({
         data: data
       })
         .then(res => {
+          console.log(res.data);
           const csvfile = new Blob([res.data], { type: 'text/csv' })
           const downloadLink = document.createElement('a');
           downloadLink.download = 'assistances.csv';
