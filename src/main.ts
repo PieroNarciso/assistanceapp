@@ -5,6 +5,7 @@ import store from './store'
 import VueCookies from 'vue-cookies'
 import Vuetify from 'vuetify'
 import vuetify from './plugins/vuetify';
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 Vue.use(VueCookies)
