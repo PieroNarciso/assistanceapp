@@ -19,3 +19,9 @@ export interface AppTime {
     value: number,
     text: String
 }
+
+export interface Assistance {
+    check_time: string,
+    id: number,
+    user: string
+}

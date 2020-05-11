@@ -1,6 +1,6 @@
 <template>
   <div id="the-header">
-    <v-app-bar app fixed elevate-on-scroll color="blue accent-3 white--text">
+    <v-app-bar app elevate-on-scroll color="blue accent-3 white--text">
       <v-app-bar-nav-icon color="white" @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>Assistance App</v-toolbar-title>
 

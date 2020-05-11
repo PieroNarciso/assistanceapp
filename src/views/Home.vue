@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <the-header></the-header>
     <v-content>
       <v-container>
         <form-login></form-login>
@@ -10,7 +9,6 @@
         <form-signup></form-signup>
       </v-container>
     </v-content>
-    <the-footer></the-footer>
   </div>
 </template>
 
