@@ -330,7 +330,6 @@ export default new Vuex.Store({
         data: data
       })
         .then(res => {
-          console.log(res.data);
           const csvfile = new Blob([res.data], { type: 'text/csv' })
           const downloadLink = document.createElement('a');
           downloadLink.download = 'assistances.csv';

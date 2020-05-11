@@ -42,22 +42,7 @@ export default Vue.extend({
   methods: {
     getTimeZoneDate: function(datetime: Date) {
       const date = new Date(datetime);
-      return (
-        moment(date)
-          // .utcOffset(-600)
-          .format("MMMM DD YYYY HH:mm:ss")
-      );
-    },
-    getDate: function(datetime: Date) {
-      const date = new Date(datetime);
-      const options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric"
-      };
-      return `${date.toLocaleString("en-US", options)}`;
+      return moment(date).format("MMMM DD YYYY HH:mm:ss");
     }
   },
 
