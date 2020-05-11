@@ -1,24 +1,22 @@
 <template>
   <div id="user-view">
-    <v-content>
-      <v-container>
-        <v-row justify="center">
-          <v-col cols="12" lg="6" md="8" sm="10">
-            <form-user-code></form-user-code>
-          </v-col>
-        </v-row>
-      </v-container>
+    <v-container fluid>
+      <v-row justify="center">
+        <v-col cols="12" lg="6" md="8" sm="10">
+          <form-user-code></form-user-code>
+        </v-col>
+      </v-row>
+    </v-container>
 
-      <v-divider></v-divider>
+    <v-divider></v-divider>
 
-      <v-container>
-        <v-row justify="center">
-          <v-col cols="12" lg="6" md="8" sm="10">
-            <assistances-list></assistances-list>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-content>
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" lg="6" md="8" sm="10">
+          <assistances-list></assistances-list>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
