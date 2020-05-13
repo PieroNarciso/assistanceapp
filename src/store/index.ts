@@ -249,7 +249,6 @@ export default new Vuex.Store({
         })
         .catch(err => {
           context.commit('updateShowLoaderFormSignup', false)
-          console.log(err.response.data)
         })
     },
 
@@ -271,7 +270,7 @@ export default new Vuex.Store({
           context.commit('updateUser', res.data)
         })
         .catch(err => {
-          console.log(err)
+          //
         })
     },
 
@@ -315,8 +314,7 @@ export default new Vuex.Store({
           context.commit('getAssistances', res.data)
         })
         .catch(err => {
-          console.log(err)
-          console.log(err.msg)
+          //
         })
     },
 
@@ -337,7 +335,9 @@ export default new Vuex.Store({
           downloadLink.style.display = "none";
           downloadLink.click();
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          //
+        })
     },
 
     addAssistance: (context, data: Assistance) => {
@@ -356,7 +356,7 @@ export default new Vuex.Store({
           context.commit('updateCode', res.data);
         })
         .catch(err => {
-          console.log(err)
+          //
         })
     },
 
@@ -372,7 +372,7 @@ export default new Vuex.Store({
           context.commit('updateCode', res.data);
         })
         .catch(err => {
-          console.log(err)
+          //
         })
     },
 
@@ -387,7 +387,9 @@ export default new Vuex.Store({
         .then(res => {
           context.commit('updateTodayAssistances', res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          //
+        })
     },
 
     resetCode: (context) => {
