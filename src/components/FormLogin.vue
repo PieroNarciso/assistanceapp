@@ -6,7 +6,7 @@
       </v-toolbar>
       <v-card-text>
         <v-container>
-          <v-form>
+          <v-form v-model="valid" lazy-validation ref="form">
             <validation-error :visible="msgErrors.login.error" :msg="msgErrors.login.msg"></validation-error>
             <validation-success :visible="msgSuccess.login.success" :msg="msgSuccess.login.msg"></validation-success>
             <v-text-field
@@ -67,19 +67,23 @@ export default Vue.extend({
         username: "",
         email: "",
         password: ""
-      }
+      },
+      valid: true
     };
   },
   methods: {
     login: function() {
-      const data = {
-        username: this.loginData.username,
-        password: this.loginData.password
-      };
-      this.$store.dispatch("updateShowLoaderFormLogin", true);
-      this.$store.dispatch("login", data);
+      if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+        const data = {
+          username: this.loginData.username,
+          password: this.loginData.password
+        };
+        this.$store.dispatch("updateShowLoaderFormLogin", true);
+        this.$store.dispatch("login", data);
+      }
     }
   },
+
   computed: {
     userData() {
       return this.$store.state.user;
