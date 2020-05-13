@@ -91,11 +91,12 @@ import router from "../../router";
 
 export default Vue.extend({
   name: "TheHeader",
+
   data() {
     return {
-      drawer: false,
       dialog: false,
-      selectedDates: [],
+      drawer: false,
+      selectedDates: [] as string[],
       loadingDownload: false,
       snackbar: {
         status: false,
@@ -120,6 +121,7 @@ export default Vue.extend({
       this.$store.dispatch("downloadAssistances", data);
     }
   },
+
   computed: {
     userData() {
       return this.$store.state.user;

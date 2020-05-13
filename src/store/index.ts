@@ -65,7 +65,7 @@ export default new Vuex.Store({
       passwordRules: [
         (v: string) => v.length >= 8 || 'At least 8 characters long.'
       ],
-    }
+    },
 
   },
   getters: {
