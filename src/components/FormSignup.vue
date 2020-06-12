@@ -6,7 +6,7 @@
       </v-toolbar>
       <v-card-text>
         <v-container>
-          <v-form>
+          <v-form v-model="valid" lazy-validation ref="form">
             <v-text-field
               @keyup.enter="signup"
               v-model="user.first_name"
@@ -87,7 +87,8 @@ export default Vue.extend({
   name: "FormSignup",
   data() {
     return {
-      user: {} as User
+      user: {} as User,
+      valid: true
     };
   },
   computed: {
