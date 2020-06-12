@@ -10,8 +10,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    domain: 'https://assistanceappapi.herokuapp.com',
-    // domain: "http://127.0.0.1:8000",
+    // domain: 'https://assistanceappapi.herokuapp.com',
+    domain: "http://127.0.0.1:8000",
     user: {
       username: '',
       password: '',
