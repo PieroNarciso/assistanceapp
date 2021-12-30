@@ -63,6 +63,16 @@ export default Vue.extend({
           id: 5,
           value: 15,
           text: "15 min"
+        },
+        {
+          id: 6,
+          value: 60,
+          text: "1 hora"
+        },
+        {
+          id: 7,
+          value: 120,
+          text: "2 horas"
         }
       ],
 
